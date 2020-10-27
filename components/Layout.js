@@ -1,0 +1,37 @@
+import Head from "next/head";
+import Header from "./Header";
+
+export default function Layout({ children, pageTitle, ...props }) {
+  return (
+    <>
+      <Head>
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <title>{pageTitle}</title>
+        <link
+          rel="icon"
+          type="image/png"
+          sizes="32x32"
+          href="/favicon-32x32.png"
+        />
+        <link
+          rel="icon"
+          type="image/png"
+          sizes="96x96"
+          href="/favicon-96x96.png"
+        />
+        <link
+          rel="icon"
+          type="image/png"
+          sizes="16x16"
+          href="/favicon-16x16.png"
+        />
+        <link rel="icon" href="/favicon.ico" type="image/x-icon" />
+      </Head>
+      <section className="layout">
+        <Header />
+        <div className="content">{children}</div>
+      </section>
+      <footer>This is a footer!</footer>
+    </>
+  );
+}
