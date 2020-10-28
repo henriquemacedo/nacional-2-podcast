@@ -3,13 +3,13 @@ import matter from "gray-matter";
 import Layout from "../components/Layout";
 import PostList from "../components/PostList";
 
-const Index = ({ title, description, ...props }) => {
+const Index = ({ title, description, posts, ...props }) => {
   return (
     <Layout pageTitle={title}>
       <h1 className="title">Welcome to Nacional 2 page!</h1>
       <p className="description">{description}</p>
       <main>
-        <PostList />
+        <PostList posts={posts} />
       </main>
     </Layout>
   );
