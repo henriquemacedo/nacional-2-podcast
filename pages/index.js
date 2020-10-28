@@ -10,7 +10,9 @@ const Index = ({ title, description, episodes, ...props }) => {
       <p>{description}</p>
       <main>
         <p>Últimos episódios 🔥</p>
-        <EpisodesList episodes={episodes} />
+        <EpisodesList
+          episodes={episodes.slice(Math.max(episodes.length - 3, 0)).reverse()}
+        />
       </main>
     </Layout>
   );
