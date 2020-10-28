@@ -9,12 +9,11 @@ export default function BlogPost({ siteTitle, frontmatter, markdownBody }) {
 
   return (
     <Layout pageTitle={`${siteTitle} | ${frontmatter.title}`}>
-      <Link href="/">
-        <a>Back to episodes list</a>
+      <Link href="/episodios">
+        <a>👈 Voltar à lista</a>
       </Link>
       <article>
         <h1>{frontmatter.title}</h1>
-        <p>By {frontmatter.author}</p>
         <div>
           <ReactMarkdown source={markdownBody} />
         </div>
@@ -24,9 +23,9 @@ export default function BlogPost({ siteTitle, frontmatter, markdownBody }) {
 }
 
 export async function getStaticProps({ ...ctx }) {
-  const { postname } = ctx.params;
+  const { episode } = ctx.params;
 
-  const content = await import(`../../posts/${postname}.md`);
+  const content = await import(`../../episodes/${episode}.md`);
   const config = await import(`../../siteconfig.json`);
   const data = matter(content.default);
 
@@ -48,9 +47,9 @@ export async function getStaticPaths() {
       return slug;
     });
     return data;
-  })(require.context("../../posts", true, /\.md$/));
+  })(require.context("../../episodes", true, /\.md$/));
 
-  const paths = blogSlugs.map((slug) => `/post/${slug}`);
+  const paths = blogSlugs.map((slug) => `/episodio/${slug}`);
 
   return {
     paths,

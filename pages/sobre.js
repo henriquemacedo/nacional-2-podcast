@@ -3,12 +3,8 @@ import Layout from "../components/Layout";
 const About = ({ title, description, ...props }) => {
   return (
     <>
-      <Layout pageTitle={`${title} | About`} description={description}>
-        <h1 className="title">Welcome to Nacional 2 Podcast page!</h1>
-
-        <p className="description">{description}</p>
-
-        <p>This is a very exciting description. Yup, it's true!</p>
+      <Layout pageTitle={`${title} — Sobre`} description={description}>
+        <p>Sobre nós 😉 🙃 🤪 🧐 😎</p>
       </Layout>
     </>
   );

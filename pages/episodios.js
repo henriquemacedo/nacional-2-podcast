@@ -5,11 +5,8 @@ import EpisodesList from "../components/EpisodesList";
 
 const Index = ({ title, description, episodes, ...props }) => {
   return (
-    <Layout pageTitle={title}>
-      <h1>Hey Nacional 2! 👋</h1>
-      <p>{description}</p>
+    <Layout pageTitle={`${title} — Episódios`} description={description}>
       <main>
-        <p>Últimos episódios 🔥</p>
         <EpisodesList episodes={episodes} />
       </main>
     </Layout>
