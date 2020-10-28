@@ -10,9 +10,7 @@ const Index = ({ title, description, episodes, ...props }) => {
       <p>{description}</p>
       <main>
         <p>Últimos episódios 🔥</p>
-        <EpisodesList
-          episodes={episodes.slice(Math.max(episodes.length - 3, 0)).reverse()}
-        />
+        <EpisodesList episodes={episodes} />
       </main>
     </Layout>
   );
@@ -42,7 +40,7 @@ export async function getStaticProps() {
 
   return {
     props: {
-      episodes,
+      episodes: episodes.slice(Math.max(episodes.length - 3, 0)).reverse(),
       title: configData.default.title,
       description: configData.default.description,
     },

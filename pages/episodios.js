@@ -37,7 +37,7 @@ export async function getStaticProps() {
 
   return {
     props: {
-      episodes,
+      episodes: episodes.reverse(),
       title: configData.default.title,
       description: configData.default.description,
     },
