@@ -1,7 +1,7 @@
 import matter from "gray-matter";
 
-import Layout from "../components/Layout";
-import EpisodesList from "../components/EpisodesList";
+import Layout from "@components/Layout";
+import EpisodesList from "@components/EpisodesList";
 
 const Index = ({ title, description, episodes, ...props }) => {
   return (
