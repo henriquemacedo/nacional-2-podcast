@@ -4,6 +4,7 @@ import { useRouter } from "next/router";
 
 import Icon from "@components/design/icon";
 import { device } from "@utils/breakpoints";
+import channels from "@utils/channels";
 
 const Wrapper = styled.div`
   background-color: var(--primary);
@@ -35,20 +36,16 @@ const Menu = styled.div`
 
   ul {
     --margin: 3vw;
-
-    margin: 0;
-    padding: 0;
     display: flex;
 
     li {
-      list-style: none;
       position: relative;
       text-transform: uppercase;
       font-size: 0.8rem;
       font-weight: var(--extraBold);
 
       &:not(:last-child) {
-        margin-right: var(--margin);
+        margin-right: calc(var(--margin) / 2);
       }
 
       &.active:after {
@@ -69,6 +66,10 @@ const Menu = styled.div`
 
     ul {
       margin: 0 0 0 var(--margin);
+
+      li {
+        font-size: 1rem;
+      }
     }
   }
 `;
@@ -83,12 +84,9 @@ const Channels = styled.div`
     align-items: center;
 
     ul {
-      margin: 0;
-      padding: 0;
       display: flex;
 
       li {
-        list-style: none;
         font-size: 1rem;
 
         &.active:after {
@@ -122,29 +120,6 @@ export default function Header() {
     },
   ];
 
-  const n2Channels = [
-    {
-      icon: "spotify",
-      url: "#0",
-    },
-    {
-      icon: "apple",
-      url: "#0",
-    },
-    {
-      icon: "google",
-      url: "#0",
-    },
-    {
-      icon: "youtube",
-      url: "#0",
-    },
-    {
-      icon: "rss",
-      url: "#0",
-    },
-  ];
-
   return (
     <Wrapper>
       <Nav>
@@ -164,13 +139,15 @@ export default function Header() {
 
         <Channels>
           <ul>
-            {n2Channels.map((channel, index) => (
-              <li key={index}>
-                <Link href={channel.url}>
-                  <Icon icon={channel.icon} />
-                </Link>
-              </li>
-            ))}
+            {Array.isArray(channels) &&
+              channels.length > 0 &&
+              channels.map((channel, index) => (
+                <li key={index}>
+                  <Link href={channel.url}>
+                    <Icon icon={channel.icon} />
+                  </Link>
+                </li>
+              ))}
           </ul>
         </Channels>
       </Nav>
