@@ -1,23 +1,23 @@
 import Link from "next/link";
 import matter from "gray-matter";
-import ReactMarkdown from "react-markdown";
 
 import Layout from "@components/Layout";
+import Episode from "@components/Episode";
 
 export default function BlogPost({ siteTitle, frontmatter, markdownBody }) {
   if (!frontmatter) return <></>;
 
   return (
     <Layout pageTitle={`${siteTitle} | ${frontmatter.title}`}>
-      <Link href="/episodios">
+      {/* <Link href="/episodios">
         <a>👈 Voltar à lista</a>
-      </Link>
-      <article>
-        <h1>{frontmatter.title}</h1>
-        <div>
-          <ReactMarkdown source={markdownBody} />
-        </div>
-      </article>
+      </Link> */}
+      <Episode
+        title={frontmatter.title}
+        date={frontmatter.date}
+        anchor={frontmatter.anchor}
+        content={markdownBody}
+      />
     </Layout>
   );
 }
