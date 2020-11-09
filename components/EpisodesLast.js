@@ -17,7 +17,7 @@ const Wrapper = styled.div`
   }
 `;
 
-function LastEpisodes({ episodes }) {
+function EpisodesLast({ episodes }) {
   return (
     <Wrapper>
       <Content>
@@ -32,4 +32,4 @@ function LastEpisodes({ episodes }) {
   );
 }
 
-export default LastEpisodes;
+export default EpisodesLast;
