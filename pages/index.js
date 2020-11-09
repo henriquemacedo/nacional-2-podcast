@@ -2,7 +2,7 @@ import matter from "gray-matter";
 
 import Layout from "@components/Layout";
 import Intro from "@components/Intro";
-import LastEpisodes from "../components/LastEpisodes";
+import LastEpisodes from "@components/LastEpisodes";
 
 const Index = ({ title, description, keywords, episodes, ...props }) => {
   return (
