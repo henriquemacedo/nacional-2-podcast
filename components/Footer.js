@@ -63,7 +63,7 @@ export default function Footer() {
               channels.map((channel, index) => (
                 <li key={index}>
                   <Link href={channel.url} passHref>
-                    <a>
+                    <a target="_blank">
                       <Icon icon={channel.icon} fill="var(--light)" />{" "}
                       <span>{channel.label}</span>
                     </a>

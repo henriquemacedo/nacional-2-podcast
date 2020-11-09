@@ -80,10 +80,12 @@ export default function EpisodesList({ episodes }) {
           return (
             <div key={episode.slug}>
               <Link href={{ pathname: `/episodio/${episode.slug}` }}>
-                <h2>
-                  {episode.frontmatter.title}
-                  <Icon icon="arrow-right" />
-                </h2>
+                <a>
+                  <h2>
+                    {episode.frontmatter.title}
+                    <Icon icon="arrow-right" />
+                  </h2>
+                </a>
               </Link>
 
               <span>{episode.frontmatter.date}</span>
@@ -118,7 +120,7 @@ export default function EpisodesList({ episodes }) {
                   src={`https://anchor.fm/nacional2podcast/embed/episodes/${episode.frontmatter.anchor}`}
                   width="100%"
                   height="161px"
-                  frameborder="0"
+                  frameBorder="0"
                   scrolling="no"
                 ></iframe>
               </div>

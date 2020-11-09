@@ -32,6 +32,7 @@ const Menu = styled.div`
     min-height: 80px;
     height: 6vw;
     max-height: 150px;
+    cursor: pointer;
   }
 
   ul {
@@ -69,6 +70,10 @@ const Menu = styled.div`
 
       li {
         font-size: 1rem;
+
+        &.active:after {
+          left: 10px;
+        }
       }
     }
   }
@@ -96,6 +101,15 @@ const Channels = styled.div`
         svg {
           width: auto;
           height: 50px;
+          transition-duration: 0.3s;
+        }
+
+        a {
+          &:hover {
+            svg {
+              fill: var(--secondary);
+            }
+          }
         }
       }
     }
@@ -114,22 +128,31 @@ export default function Header() {
       label: "Episódios",
       url: "/episodios",
     },
-    {
-      label: "Sobre",
-      url: "/sobre",
-    },
+    // {
+    //   label: "Sobre",
+    //   url: "/sobre",
+    // },
   ];
 
   return (
     <Wrapper>
       <Nav>
         <Menu>
-          <img src="/n2-logo.svg" alt="Nacional 2" />
+          <Link href="/">
+            <img src="/n2-logo.svg" alt="Nacional 2" />
+          </Link>
           <ul>
             {menu.map((item, index) => (
               <li
                 key={index}
-                className={router.pathname == item.url ? "active" : ""}
+                className={
+                  router.pathname == item.url
+                    ? "active"
+                    : router.asPath.includes("/episodio/") &&
+                      item.url == "/episodios"
+                    ? "active"
+                    : ""
+                }
               >
                 <Link href={item.url}>{item.label}</Link>
               </li>
@@ -144,7 +167,9 @@ export default function Header() {
               channels.map((channel, index) => (
                 <li key={index}>
                   <Link href={channel.url}>
-                    <Icon icon={channel.icon} />
+                    <a target="_blank">
+                      <Icon icon={channel.icon} />
+                    </a>
                   </Link>
                 </li>
               ))}
