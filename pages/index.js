@@ -4,9 +4,13 @@ import Layout from "@components/Layout";
 import Intro from "@components/Intro";
 import LastEpisodes from "@components/LastEpisodes";
 
-const Index = ({ title, description, episodes, ...props }) => {
+const Index = ({ title, description, keywords, episodes, ...props }) => {
   return (
-    <Layout pageTitle={title}>
+    <Layout
+      pageTitle={title}
+      pageDescription={description}
+      pageKeywords={keywords}
+    >
       <Intro description={description} />
       <main>
         <LastEpisodes episodes={episodes} />
@@ -42,6 +46,7 @@ export async function getStaticProps() {
       episodes: episodes.slice(Math.max(episodes.length - 3, 0)).reverse(),
       title: configData.default.title,
       description: configData.default.description,
+      keywords: configData.default.keywords,
     },
   };
 }

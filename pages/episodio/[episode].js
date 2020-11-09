@@ -1,17 +1,25 @@
-import Link from "next/link";
 import matter from "gray-matter";
 
 import Layout from "@components/Layout";
 import Episode from "@components/Episode";
 
-export default function BlogPost({ siteTitle, frontmatter, markdownBody }) {
+export default function BlogPost({
+  title,
+  description,
+  keywords,
+  frontmatter,
+  markdownBody,
+}) {
   if (!frontmatter) return <></>;
 
   return (
-    <Layout pageTitle={`${siteTitle} | ${frontmatter.title}`}>
-      {/* <Link href="/episodios">
-        <a>👈 Voltar à lista</a>
-      </Link> */}
+    <Layout
+      pageTitle={`${title} | ${frontmatter.title}`}
+      pageDescription={description}
+      pageKeywords={
+        frontmatter.keywords ? `${keywords}, ${frontmatter.keywords}` : keywords
+      }
+    >
       <Episode
         title={frontmatter.title}
         date={frontmatter.date}
@@ -24,14 +32,15 @@ export default function BlogPost({ siteTitle, frontmatter, markdownBody }) {
 
 export async function getStaticProps({ ...ctx }) {
   const { episode } = ctx.params;
-
   const content = await import(`../../episodes/${episode}.md`);
-  const config = await import(`../../siteconfig.json`);
+  const configData = await import(`../../siteconfig.json`);
   const data = matter(content.default);
 
   return {
     props: {
-      siteTitle: config.title,
+      title: configData.default.title,
+      description: configData.default.description,
+      keywords: configData.default.keywords,
       frontmatter: data.data,
       markdownBody: data.content,
     },

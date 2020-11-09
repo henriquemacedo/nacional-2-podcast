@@ -2,12 +2,21 @@ import Head from "next/head";
 import Header from "./Header";
 import Footer from "./Footer";
 
-export default function Layout({ children, pageTitle, ...props }) {
+export default function Layout({
+  children,
+  pageTitle,
+  pageDescription,
+  pageKeywords,
+  ...props
+}) {
   return (
     <>
       <Head>
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <title>{pageTitle}</title>
+        <meta key="description" name="description" content={pageDescription} />
+        <meta key="keywords" name="keywords" content={pageKeywords} />
+        <meta name="robots" content="index, follow" />
         <link
           rel="icon"
           type="image/png"

@@ -3,9 +3,13 @@ import matter from "gray-matter";
 import Layout from "@components/Layout";
 import Archive from "@components/Archive";
 
-const Index = ({ title, description, episodes, ...props }) => {
+const Index = ({ title, description, keywords, episodes, ...props }) => {
   return (
-    <Layout pageTitle={`${title} — Episódios`} description={description}>
+    <Layout
+      pageTitle={`${title} — Episódios`}
+      pageDescription={description}
+      pageKeywords={keywords}
+    >
       <main>
         <Archive episodes={episodes} />
       </main>
@@ -40,6 +44,7 @@ export async function getStaticProps() {
       episodes: episodes.reverse(),
       title: configData.default.title,
       description: configData.default.description,
+      keywords: configData.default.keywords,
     },
   };
 }

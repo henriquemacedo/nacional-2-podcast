@@ -27,11 +27,7 @@ const Intro = ({ description }) => (
         <br />
         Podcast
       </h1>
-      <p>
-        {description}. I'm baby blue bottle sriracha brooklyn banjo synth
-        waistcoat lyft activated charcoal cred bespoke taiyaki lumbersexual
-        literally beard. Occupy chia meditation keytar.
-      </p>
+      <p>{description}</p>
     </Content>
   </Wrapper>
 );
