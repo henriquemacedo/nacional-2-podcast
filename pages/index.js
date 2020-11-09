@@ -2,7 +2,7 @@ import matter from "gray-matter";
 
 import Layout from "@components/Layout";
 import Intro from "@components/Intro";
-import LastEpisodes from "../components/LastEpisodes";
+import EpisodesLast from "@components/EpisodesLast";
 
 const Index = ({ title, description, keywords, episodes, ...props }) => {
   return (
@@ -13,7 +13,7 @@ const Index = ({ title, description, keywords, episodes, ...props }) => {
     >
       <Intro description={description} />
       <main>
-        <LastEpisodes episodes={episodes} />
+        <EpisodesLast episodes={episodes} />
       </main>
     </Layout>
   );

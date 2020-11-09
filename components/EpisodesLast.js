@@ -17,17 +17,19 @@ const Wrapper = styled.div`
   }
 `;
 
-const LastEpisodes = ({ episodes }) => (
-  <Wrapper>
-    <Content>
-      <h2>
-        Últimos
-        <br />
-        Episódios
-      </h2>
-      <EpisodesList episodes={episodes} />
-    </Content>
-  </Wrapper>
-);
+function EpisodesLast({ episodes }) {
+  return (
+    <Wrapper>
+      <Content>
+        <h2>
+          Últimos
+          <br />
+          Episódios
+        </h2>
+        <EpisodesList episodes={episodes} />
+      </Content>
+    </Wrapper>
+  );
+}
 
-export default LastEpisodes;
+export default EpisodesLast;
