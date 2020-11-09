@@ -1,13 +1,13 @@
 import matter from "gray-matter";
 
 import Layout from "@components/Layout";
-import EpisodesList from "@components/EpisodesList";
+import Archive from "@components/Archive";
 
 const Index = ({ title, description, episodes, ...props }) => {
   return (
     <Layout pageTitle={`${title} — Episódios`} description={description}>
       <main>
-        <EpisodesList episodes={episodes} />
+        <Archive episodes={episodes} />
       </main>
     </Layout>
   );

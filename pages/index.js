@@ -1,16 +1,15 @@
 import matter from "gray-matter";
 
 import Layout from "@components/Layout";
-import EpisodesList from "@components/EpisodesList";
+import Intro from "@components/Intro";
+import LastEpisodes from "@components/LastEpisodes";
 
 const Index = ({ title, description, episodes, ...props }) => {
   return (
     <Layout pageTitle={title}>
-      <h1>Hey Nacional 2! 👋</h1>
-      <p>{description}</p>
+      <Intro description={description} />
       <main>
-        <p>Últimos episódios 🔥</p>
-        <EpisodesList episodes={episodes} />
+        <LastEpisodes episodes={episodes} />
       </main>
     </Layout>
   );
