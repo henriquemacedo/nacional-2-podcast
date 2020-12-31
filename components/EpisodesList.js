@@ -91,39 +91,50 @@ export default function EpisodesList({ episodes }) {
               <span>{episode.frontmatter.date}</span>
 
               <ul>
-                <li>
-                  <Link href={episode.frontmatter.spotify}>
-                    <Icon icon="spotify" />
-                  </Link>
-                </li>
-                <li>
-                  <Link href={episode.frontmatter.apple}>
-                    <Icon icon="apple" />
-                  </Link>
-                </li>
-                <li>
-                  <Link href={episode.frontmatter.google}>
-                    <Icon icon="google" />
-                  </Link>
-                </li>
-                <li>
-                  <Link href={episode.frontmatter.youtube}>
-                    <Icon icon="youtube" />
-                  </Link>
-                </li>
+                {episode.frontmatter.spotify && (
+                  <li>
+                    <Link href={episode.frontmatter.spotify}>
+                      <Icon icon="spotify" />
+                    </Link>
+                  </li>
+                )}
+                {episode.frontmatter.apple && (
+                  <li>
+                    <Link href={episode.frontmatter.apple}>
+                      <Icon icon="apple" />
+                    </Link>
+                  </li>
+                )}
+
+                {episode.frontmatter.google && (
+                  <li>
+                    <Link href={episode.frontmatter.google}>
+                      <Icon icon="google" />
+                    </Link>
+                  </li>
+                )}
+                {episode.frontmatter.youtube && (
+                  <li>
+                    <Link href={episode.frontmatter.youtube}>
+                      <Icon icon="youtube" />
+                    </Link>
+                  </li>
+                )}
               </ul>
 
               <p>{episode.frontmatter.subject}</p>
 
-              <div className="player">
-                <iframe
-                  src={`https://anchor.fm/nacional2podcast/embed/episodes/${episode.frontmatter.anchor}`}
-                  width="100%"
-                  height="161px"
-                  frameBorder="0"
-                  scrolling="no"
-                ></iframe>
-              </div>
+              {episode.frontmatter.anchor && (
+                <div className="player">
+                  <iframe
+                    src={`https://anchor.fm/nacional2podcast/embed/episodes/${episode.frontmatter.anchor}`}
+                    width="100%"
+                    height="161px"
+                    frameBorder="0"
+                    scrolling="no"
+                  ></iframe>
+                </div>
+              )}
             </div>
           );
         })}

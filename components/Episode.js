@@ -61,15 +61,17 @@ const Episode = ({ title, date, anchor, content }) => (
       <article>
         <h1>{title}</h1>
         <span>{date}</span>
-        <div className="player">
-          <iframe
-            src={`https://anchor.fm/nacional2podcast/embed/episodes/${anchor}`}
-            width="100%"
-            height="161px"
-            frameBorder="0"
-            scrolling="no"
-          ></iframe>
-        </div>
+        {anchor && (
+          <div className="player">
+            <iframe
+              src={`https://anchor.fm/nacional2podcast/embed/episodes/${anchor}`}
+              width="100%"
+              height="161px"
+              frameBorder="0"
+              scrolling="no"
+            ></iframe>
+          </div>
+        )}
         <div>
           <ReactMarkdown source={content} />
         </div>
