@@ -123,15 +123,18 @@ export default function Header() {
     {
       label: "Início",
       url: "/",
+      external: false,
     },
     {
       label: "Episódios",
       url: "/episodios",
+      external: false,
     },
-    // {
-    //   label: "Sobre",
-    //   url: "/sobre",
-    // },
+    {
+      label: "N2Vinho",
+      url: "https://n2vinho.com",
+      external: true,
+    },
   ];
 
   return (
@@ -154,7 +157,14 @@ export default function Header() {
                     : ""
                 }
               >
-                <Link href={item.url}>{item.label}</Link>
+                <Link href={item.url}>
+                  <a
+                    target={item.external ? "_blank" : undefined}
+                    rel={item.external ? "noopener noreferrer" : undefined}
+                  >
+                    {item.label}
+                  </a>
+                </Link>
               </li>
             ))}
           </ul>
