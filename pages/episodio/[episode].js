@@ -32,7 +32,9 @@ export default function BlogPost({
 
 export async function getStaticProps({ ...ctx }) {
   const { episode } = ctx.params;
-  const content = await import(`../../episodes/${episode}.md`);
+  const content = await import(
+    `../../episodes/${episode.substring(0, 3)}/${episode}.md`
+  );
   const configData = await import(`../../siteconfig.json`);
   const data = matter(content.default);
 
