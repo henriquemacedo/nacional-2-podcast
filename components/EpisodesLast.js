@@ -26,7 +26,11 @@ function EpisodesLast({ episodes }) {
           <br />
           Episódios
         </h2>
-        <EpisodesList episodes={episodes} />
+        <EpisodesList
+          episodes={episodes}
+          seasonLinkPath="episodios/s02"
+          seasonLinkValue="Ver mais"
+        />
       </Content>
     </Wrapper>
   );

@@ -1,5 +1,4 @@
 import styled from "styled-components";
-
 import EpisodesList from "@components/EpisodesList";
 import Content from "@components/design/content";
 
@@ -11,12 +10,20 @@ const Wrapper = styled.div`
   }
 `;
 
-const Archive = ({ episodes }) => (
-  <Wrapper>
-    <Content>
-      <EpisodesList episodes={episodes} />
-    </Content>
-  </Wrapper>
-);
+const Archive = (props) => {
+  const { episodes, seasonLinkPath, seasonLinkValue } = props;
+
+  return (
+    <Wrapper>
+      <Content>
+        <EpisodesList
+          episodes={episodes}
+          seasonLinkPath={seasonLinkPath}
+          seasonLinkValue={seasonLinkValue}
+        />
+      </Content>
+    </Wrapper>
+  );
+};
 
 export default Archive;

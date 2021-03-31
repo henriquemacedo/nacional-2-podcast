@@ -11,7 +11,11 @@ const Index = ({ title, description, keywords, episodes, ...props }) => {
       pageKeywords={keywords}
     >
       <main>
-        <Archive episodes={episodes} />
+        <Archive
+          episodes={episodes}
+          seasonLinkPath="s01"
+          seasonLinkValue="Temporada 1"
+        />
       </main>
     </Layout>
   );
@@ -20,7 +24,7 @@ const Index = ({ title, description, keywords, episodes, ...props }) => {
 export default Index;
 
 export async function getStaticProps() {
-  const configData = await import(`../siteconfig.json`);
+  const configData = await import(`../../siteconfig.json`);
 
   const episodes = ((context) => {
     const keys = context.keys();
@@ -37,7 +41,7 @@ export async function getStaticProps() {
       };
     });
     return data;
-  })(require.context("../episodes", true, /\.md$/));
+  })(require.context("../../episodes/s02", true, /\.md$/));
 
   return {
     props: {

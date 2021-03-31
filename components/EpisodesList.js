@@ -69,7 +69,8 @@ const Wrapper = styled.div`
   }
 `;
 
-export default function EpisodesList({ episodes }) {
+export default function EpisodesList(props) {
+  const { episodes, seasonLinkPath = "s01", seasonLinkValue = "" } = props;
   if (episodes === "undefined") return null;
 
   return (
@@ -138,6 +139,17 @@ export default function EpisodesList({ episodes }) {
             </div>
           );
         })}
+
+      {seasonLinkPath && seasonLinkValue && (
+        <Link href={seasonLinkPath}>
+          <a>
+            <h2>
+              {seasonLinkValue}
+              <Icon icon="arrow-right" />
+            </h2>
+          </a>
+        </Link>
+      )}
     </Wrapper>
   );
 }

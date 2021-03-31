@@ -1,19 +1,21 @@
 import matter from "gray-matter";
 
 import Layout from "@components/Layout";
-import Intro from "@components/Intro";
-import EpisodesLast from "@components/EpisodesLast";
+import Archive from "@components/Archive";
 
 const Index = ({ title, description, keywords, episodes, ...props }) => {
   return (
     <Layout
-      pageTitle={title}
+      pageTitle={`${title} — Episódios`}
       pageDescription={description}
       pageKeywords={keywords}
     >
-      <Intro description={description} />
       <main>
-        <EpisodesLast episodes={episodes} />
+        <Archive
+          episodes={episodes}
+          seasonLinkPath="s02"
+          seasonLinkValue="Temporada 2"
+        />
       </main>
     </Layout>
   );
@@ -22,7 +24,7 @@ const Index = ({ title, description, keywords, episodes, ...props }) => {
 export default Index;
 
 export async function getStaticProps() {
-  const configData = await import(`../siteconfig.json`);
+  const configData = await import(`../../siteconfig.json`);
 
   const episodes = ((context) => {
     const keys = context.keys();
@@ -39,11 +41,11 @@ export async function getStaticProps() {
       };
     });
     return data;
-  })(require.context("../episodes/s02", true, /\.md$/));
+  })(require.context("../../episodes/s01", true, /\.md$/));
 
   return {
     props: {
-      episodes: episodes.slice(Math.max(episodes.length - 3, 0)).reverse(),
+      episodes: episodes.reverse(),
       title: configData.default.title,
       description: configData.default.description,
       keywords: configData.default.keywords,

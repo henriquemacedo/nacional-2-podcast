@@ -127,7 +127,7 @@ export default function Header() {
     },
     {
       label: "Episódios",
-      url: "/episodios",
+      url: "/episodios/s02",
       external: false,
     },
     {
@@ -151,8 +151,11 @@ export default function Header() {
                 className={
                   router.pathname == item.url
                     ? "active"
+                    : router.asPath.includes("/episodios/") &&
+                      item.url.includes("/episodios/")
+                    ? "active"
                     : router.asPath.includes("/episodio/") &&
-                      item.url == "/episodios"
+                      item.url.includes("/episodios/")
                     ? "active"
                     : ""
                 }
